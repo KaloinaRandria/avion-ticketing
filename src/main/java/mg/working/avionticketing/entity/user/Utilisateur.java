@@ -19,5 +19,5 @@ public class Utilisateur {
     private String email;
     @Column(name = "mot_de_passe")
     private String motDePasse;
-    private int statut; //admin , client
+    private int statut; //admin, client
 }
