@@ -5,8 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "redirect:/login-page";
     }
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "/accueil";
+    }
+
 }

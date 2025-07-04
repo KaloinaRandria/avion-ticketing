@@ -1,0 +1,49 @@
+/* style.css - design mature pour la page login */
+
+body {
+    background-color: #f4f5f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-login {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #e0e0e0;
+}
+
+.card-login h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-label {
+    color: #555;
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+}
+
+.btn-primary {
+    background-color: #3b5998;
+    border-color: #3b5998;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #2d4373;
+    border-color: #2d4373;
+}
