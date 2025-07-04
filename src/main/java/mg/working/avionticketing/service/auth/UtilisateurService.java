@@ -19,6 +19,10 @@ public class UtilisateurService {
     }
 
     public void insertUtilisateur(Utilisateur utilisateur) {
+        String rawPassword = utilisateur.getMotDePasse();
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        utilisateur.setMotDePasse(encodedPassword);
+
         utilisateurRepository.save(utilisateur);
     }
 
