@@ -15,20 +15,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/save").permitAll()
-                        .requestMatchers("/sign-up-page").permitAll()
-                        .requestMatchers("dashboard").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/login").permitAll()
-                        .requestMatchers("login-page").permitAll()
+                        .requestMatchers("/sign-up-page", "/login-page", "/login").permitAll()
+                        .requestMatchers("/dashboard").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .loginPage("/login-page")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true)
-                        .failureUrl("/login")
-                        .permitAll()
-                )
-                .logout(logout -> logout.permitAll());
+                .csrf(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable) // ❌ désactive le form login de Spring
+                .logout(AbstractHttpConfigurer::disable);
         return http.build();
     }
 }
