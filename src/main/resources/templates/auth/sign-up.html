@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+  <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/assets/css/style.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="card-login">
+  <h2>Créer un compte</h2>
+
+  <!-- Section affichage des erreurs -->
+  <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+
+  <!-- Section message succès -->
+  <div th:if="${success}" class="alert alert-success" role="alert" th:text="${success}"></div>
+
+  <form th:action="@{/sign-up}" method="post">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" name="nom" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="motDePasse" class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="statut" class="form-label">Statut</label>
+      <select class="form-select" id="statut" name="statut" required>
+        <option value="" disabled selected>Choisir un statut</option>
+        <option value="1">Admin</option>
+        <option value="2">Client</option>
+      </select>
+    </div>
+
+    <div class="d-grid mb-3">
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </div>
+  </form>
+
+  <!-- Bouton Se connecter -->
+  <div class="d-grid">
+    <a th:href="@{/login-page}" class="btn btn-secondary">Vous avez deja un compte</a>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -38,4 +38,9 @@ public class AuthController {
         model.addAttribute("error" , "Email ou Mot de Passe incorrect.");
         return "auth/login";
     }
+
+    @GetMapping("/sign-up-page")
+    public String goToSignUpPage() {
+        return "auth/sign-up";
+    }
 }
