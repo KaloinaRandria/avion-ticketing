@@ -12,12 +12,13 @@
   <h2>Créer un compte</h2>
 
   <!-- Section affichage des erreurs -->
-  <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+  <div th:if="${message}" class="alert alert-info" role="alert" th:text="${message}"></div>
 
   <!-- Section message succès -->
   <div th:if="${success}" class="alert alert-success" role="alert" th:text="${success}"></div>
 
-  <form th:action="@{/sign-up}" method="post">
+  <form th:action="@{/save}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <div class="mb-3">
       <label for="nom" class="form-label">Nom</label>
       <input type="text" class="form-control" id="nom" name="nom" required>

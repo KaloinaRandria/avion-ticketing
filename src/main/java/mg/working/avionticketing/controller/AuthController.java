@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthController {
@@ -42,5 +43,31 @@ public class AuthController {
     @GetMapping("/sign-up-page")
     public String goToSignUpPage() {
         return "auth/sign-up";
+    }
+
+    @PostMapping("/save")
+    public String signIUtilisateur(@RequestParam(name = "nom") String nom,
+                                   @RequestParam(name = "email") String email,
+                                   @RequestParam(name = "motDePasse") String motDePasse,
+                                   @RequestParam(name = "statut") String status,
+                                   RedirectAttributes redirectAttributes) {
+
+        if (nom == null || nom.isEmpty()
+        || email == null || email.isEmpty()
+        || motDePasse == null || motDePasse.isEmpty()
+        || status == null || status.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message" , "Champs Incomplet.");
+            return "redirect:/sign-up-page";
+        }
+
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setNom(nom);
+        utilisateur.setEmail(email);
+        utilisateur.setMotDePasse(motDePasse);
+        utilisateur.setStatut(Integer.valueOf(status));
+
+        utilisateurService.insertUtilisateur(utilisateur);
+        redirectAttributes.addFlashAttribute("message", "Utilisateur créé avec succès !");
+        return "redirect:/sign-up-page";
     }
 }
