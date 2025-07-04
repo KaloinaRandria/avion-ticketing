@@ -92,7 +92,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20210307</version>            <!-- Vous pouvez choisir une version plus récente si disponible -->
+            <version>20231013</version>            <!-- Vous pouvez choisir une version plus récente si disponible -->
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
