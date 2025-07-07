@@ -39,3 +39,15 @@ INSERT INTO siege_modele (nb_siege, id_modele, id_type_siege) VALUES
 INSERT INTO siege_modele (nb_siege, id_modele, id_type_siege) VALUES
 (88, 3, 1),
 (12, 3, 2);
+
+
+-- VOL(id, avion_id, ville_depart_id, ville_arrivee_id, date_depart, date_arrivee)
+-- Format: 'YYYY-MM-DD HH:MM:SS'
+
+INSERT INTO vol (id, avion_id, ville_depart_id, ville_arrivee_id, date_depart, date_arrivee) VALUES
+                                                                                                 (1, 1, 1, 2, '2025-07-10 08:00:00', '2025-07-10 15:30:00'),  -- Tana -> Paris
+                                                                                                 (2, 2, 2, 1, '2025-07-11 10:00:00', '2025-07-11 17:45:00'),  -- Paris -> Tana
+                                                                                                 (3, 3, 4, 5, '2025-07-12 06:15:00', '2025-07-12 12:45:00'),  -- Nairobi -> Bangkok
+                                                                                                 (4, 1, 1, 3, '2025-07-13 07:00:00', '2025-07-13 12:30:00'),  -- Tana -> Johannesburg
+                                                                                                 (5, 2, 3, 1, '2025-07-14 13:00:00', '2025-07-14 18:45:00'),  -- Johannesburg -> Tana
+                                                                                                 (6, 3, 5, 4, '2025-07-15 09:30:00', '2025-07-15 16:00:00');  -- Bangkok -> Nairobi

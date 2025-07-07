@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Liste des vols</title>
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Compagnie Aérienne</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="mb-4 text-center">Liste des vols</h2>
+
+    <!-- Vérifie si 'vols' n'est pas nul ou vide -->
+    <div th:if="${vols != null and !vols.isEmpty()}">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>Numéro de vol</th>
+                    <th>Avion</th>
+                    <th>Départ</th>
+                    <th>Arrivée</th>
+                    <th>Date départ</th>
+                    <th>Date arrivée</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vol : ${vols}">
+                    <td th:text="${vol.id}"></td>
+                    <td th:text="${vol.avion.libelle}"></td>
+                    <td th:text="${vol.villeDepart.nom}"></td>
+                    <td th:text="${vol.villeArrivee.nom}"></td>
+                    <td th:text="${vol.dateDepart}"></td>
+                    <td th:text="${vol.dateArrivee}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Affiche un message si aucun vol n'est disponible -->
+    <div th:if="${vols == null or vols.isEmpty()}">
+        <div class="alert alert-warning text-center" role="alert">
+            Aucun vol disponible pour le moment.
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optionnel si tu veux interactivité, comme pour navbar responsive) -->
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 </html>
