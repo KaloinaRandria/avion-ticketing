@@ -47,3 +47,21 @@ body {
     background-color: #2d4373;
     border-color: #2d4373;
 }
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    min-height: 100vh;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+}
+.sidebar .nav-link:hover {
+    background-color: #495057;
+}
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}

@@ -13,7 +13,7 @@ public class HomeController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "redirect:/vol/list";
+        return "/accueil";
     }
 
 }
