@@ -17,6 +17,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/save").permitAll()
                         .requestMatchers("/sign-up-page", "/login-page", "/login").permitAll()
                         .requestMatchers("/dashboard").permitAll()
+                        .requestMatchers("/vol/**").permitAll()
                         .requestMatchers("/").permitAll()
                         .anyRequest().authenticated()
                 )
