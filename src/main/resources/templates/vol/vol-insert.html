@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un vol</title>
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Ajouter un nouveau vol</h2>
+
+    <form th:action="@{/vol/save}" th:object="${vol}" method="post" class="row g-3">
+
+        <!-- Avion -->
+        <div class="col-md-6">
+            <label for="avion" class="form-label">Avion</label>
+            <select id="avion" th:field="*{avion}" class="form-select" required>
+                <option value="" disabled selected>Choisissez un avion</option>
+                <option th:each="a : ${avions}"
+                        th:value="${a.id}"
+                        th:text="${a.libelle}">
+                </option>
+            </select>
+        </div>
+
+        <!-- Prix base -->
+        <div class="col-md-6">
+            <label for="prixBase" class="form-label">Prix de base (Ar)</label>
+            <input type="number" id="prixBase" min="0.01" step="0.01" th:field="*{prixBase}" class="form-control" required>
+        </div>
+
+        <!-- Ville départ -->
+        <div class="col-md-6">
+            <label for="villeDepart" class="form-label">Ville de départ</label>
+            <select id="villeDepart" th:field="*{villeDepart}" class="form-select" required>
+                <option value="" disabled selected>Choisissez une ville</option>
+                <option th:each="v : ${villes}"
+                        th:value="${v.id}"
+                        th:text="${v.nom}">
+                </option>
+            </select>
+        </div>
+
+        <!-- Ville arrivée -->
+        <div class="col-md-6">
+            <label for="villeArrivee" class="form-label">Ville d’arrivée</label>
+            <select id="villeArrivee" th:field="*{villeArrivee}" class="form-select" required>
+                <option value="" disabled selected>Choisissez une ville</option>
+                <option th:each="v : ${villes}"
+                        th:value="${v.id}"
+                        th:text="${v.nom}">
+                </option>
+            </select>
+        </div>
+
+        <!-- Date de départ -->
+        <div class="col-md-6">
+            <label for="dateDepart" class="form-label">Date de départ</label>
+            <input type="datetime-local" id="dateDepart" th:field="*{dateDepart}" class="form-control" required>
+        </div>
+
+        <!-- Date d’arrivée -->
+        <div class="col-md-6">
+            <label for="dateArrivee" class="form-label">Date d’arrivée</label>
+            <input type="datetime-local" id="dateArrivee" th:field="*{dateArrivee}" class="form-control" required>
+        </div>
+
+
+
+        <!-- Bouton -->
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a th:href="@{/vol/list}" class="btn btn-secondary">Annuler</a>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
