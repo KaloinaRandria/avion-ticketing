@@ -49,4 +49,17 @@ public class Vol {
     @Digits(integer = 10, fraction = 2)
     @Column(name = "prix_base", nullable = false, precision = 10, scale = 2)
     private BigDecimal prixBase;
+
+    public void setPrixBase(String prixBaseString) {
+        this.prixBase = new BigDecimal(prixBaseString);
+    }
+
+    public void setDateDepart(String dateDepartString) {
+        this.dateDepart = LocalDateTime.parse(dateDepartString);
+    }
+
+    public void setDateArrivee(String dateArriveeString) {
+        this.dateArrivee = LocalDateTime.parse(dateArriveeString);
+    }
+
 }
