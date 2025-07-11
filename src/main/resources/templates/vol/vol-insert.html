@@ -14,7 +14,7 @@
         <!-- Avion -->
         <div class="col-md-6">
             <label for="avion" class="form-label">Avion</label>
-            <select id="avion" th:field="*{avion}" class="form-select" required>
+            <select id="avion" th:field="*{avion}" class="form-select" name="avion" required>
                 <option value="" disabled selected>Choisissez un avion</option>
                 <option th:each="a : ${avions}"
                         th:value="${a.id}"
@@ -26,13 +26,13 @@
         <!-- Prix base -->
         <div class="col-md-6">
             <label for="prixBase" class="form-label">Prix de base (Ar)</label>
-            <input type="number" id="prixBase" min="0.01" step="0.01" th:field="*{prixBase}" class="form-control" required>
+            <input type="number" id="prixBase" min="0.01" step="0.01" th:field="*{prixBase}" class="form-control" name="prixBase" required>
         </div>
 
         <!-- Ville départ -->
         <div class="col-md-6">
             <label for="villeDepart" class="form-label">Ville de départ</label>
-            <select id="villeDepart" th:field="*{villeDepart}" class="form-select" required>
+            <select id="villeDepart" th:field="*{villeDepart}" class="form-select" name="villeDepart" required>
                 <option value="" disabled selected>Choisissez une ville</option>
                 <option th:each="v : ${villes}"
                         th:value="${v.id}"
@@ -44,7 +44,7 @@
         <!-- Ville arrivée -->
         <div class="col-md-6">
             <label for="villeArrivee" class="form-label">Ville d’arrivée</label>
-            <select id="villeArrivee" th:field="*{villeArrivee}" class="form-select" required>
+            <select id="villeArrivee" th:field="*{villeArrivee}" class="form-select" name="villeArrivee" required>
                 <option value="" disabled selected>Choisissez une ville</option>
                 <option th:each="v : ${villes}"
                         th:value="${v.id}"
@@ -56,13 +56,13 @@
         <!-- Date de départ -->
         <div class="col-md-6">
             <label for="dateDepart" class="form-label">Date de départ</label>
-            <input type="datetime-local" id="dateDepart" th:field="*{dateDepart}" class="form-control" required>
+            <input type="datetime-local" id="dateDepart" th:field="*{dateDepart}" class="form-control" name="dateDepart" required>
         </div>
 
         <!-- Date d’arrivée -->
         <div class="col-md-6">
             <label for="dateArrivee" class="form-label">Date d’arrivée</label>
-            <input type="datetime-local" id="dateArrivee" th:field="*{dateArrivee}" class="form-control" required>
+            <input type="datetime-local" id="dateArrivee" th:field="*{dateArrivee}" class="form-control" name="dateArrivee" required>
         </div>
 
 

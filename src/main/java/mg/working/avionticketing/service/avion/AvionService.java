@@ -15,4 +15,8 @@ public class AvionService {
     public List<Avion> getAllAvion() {
         return avionRepository.findAll();
     }
+
+    public Avion getAvionById(int id) {
+        return avionRepository.findById(id).orElse(null);
+    }
 }

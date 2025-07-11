@@ -11,6 +11,7 @@
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.PostMapping;
     import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RequestParam;
 
     import java.util.List;
 
@@ -40,14 +41,21 @@
 
         @PostMapping("/save")
         public String insertVol(Model model ,
-                                String idAvion,
-                                String idVilleDepart,
-                                String idVilleArrivee,
-                                String dateDepart,
-                                String dateArrivee,
-                                String prixBase) {
+                                @RequestParam(name = "avion") String idAvion,
+                                @RequestParam(name = "villeDepart") String idVilleDepart,
+                                @RequestParam(name = "villeArrivee") String idVilleArrivee,
+                                @RequestParam(name = "dateDepart") String dateDepart,
+                                @RequestParam(name = "dateArrivee") String dateArrivee,
+                                @RequestParam(name = "prixBase") String prixBase) {
             Vol vol = new Vol();
+            vol.setAvion(avionService.getAvionById(Integer.valueOf(idAvion)));
+            vol.setVilleDepart(villeService.getVilleById(Integer.valueOf(idVilleDepart)));
+            vol.setVilleArrivee(villeService.getVilleById(Integer.valueOf(idVilleArrivee)));
+            vol.setDateDepart(dateDepart);
+            vol.setDateArrivee(dateArrivee);
+            vol.setPrixBase(prixBase);
 
+            volService.insertVol(vol);
 
             return "redirect:/vol/list";
         }

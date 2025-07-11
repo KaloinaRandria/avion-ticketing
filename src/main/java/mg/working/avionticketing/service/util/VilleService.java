@@ -15,4 +15,8 @@ public class VilleService {
     public List<Ville> getAllVille() {
         return villeRepository.findAll();
     }
+
+    public Ville getVilleById(int id) {
+        return villeRepository.findById(id).orElse(null);
+    }
 }
