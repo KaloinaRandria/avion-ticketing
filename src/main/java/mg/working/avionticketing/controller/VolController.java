@@ -59,4 +59,31 @@
 
             return "redirect:/vol/list";
         }
+
+        @GetMapping("/filter")
+        public String getVolFilter(Model model,
+                                   @RequestParam(name = "avion", required = false, defaultValue = "") String idAvion,
+                                   @RequestParam(name = "villeDepart", required = false, defaultValue = "") String idVilleDepart,
+                                   @RequestParam(name = "villeArrivee", required = false, defaultValue = "") String idVilleArrivee,
+                                   @RequestParam(name = "dateDepart", required = false, defaultValue = "") String dateDepart,
+                                   @RequestParam(name = "dateArrivee", required = false, defaultValue = "") String dateArrivee,
+                                   @RequestParam(name = "prixBase", required = false, defaultValue = "") String prixBase) {
+            List<Vol> vols = volService.getListVolBFilter(null, idAvion, idVilleDepart, idVilleArrivee, dateDepart, dateArrivee, prixBase);
+
+            // 👇 Ajout des données nécessaires à la page
+            model.addAttribute("vols", vols);
+            model.addAttribute("avions", avionService.getAllAvion());
+            model.addAttribute("villes", villeService.getAllVille());
+
+            // 👇 Pour garder les valeurs dans les champs après recherche
+            model.addAttribute("selectedAvion", idAvion);
+            model.addAttribute("selectedVilleDepart", idVilleDepart);
+            model.addAttribute("selectedVilleArrivee", idVilleArrivee);
+            model.addAttribute("selectedDateDepart", dateDepart);
+            model.addAttribute("selectedDateArrivee", dateArrivee);
+            model.addAttribute("selectedPrixBase", prixBase);
+
+            return "vol/vol-list";
+        }
+
     }

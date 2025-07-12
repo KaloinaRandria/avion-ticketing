@@ -11,16 +11,51 @@
 <div th:replace="~{fragments/sidebar :: sidebar}"></div>
 
 <!-- Contenu principal -->
-<div class="content">
+<div class="content container mt-4">
     <h2 class="mb-4 text-center">Liste des vols</h2>
 
-    <div class="mb-3">
+    <div class="mb-3 text-end">
         <a th:href="@{/vol/save-page}" class="btn btn-success">
             + Ajouter un nouveau vol
         </a>
     </div>
 
-    <!-- Vérifie si 'vols' n'est pas nul ou vide -->
+    <!-- Formulaire de recherche -->
+    <form th:action="@{/vol/filter}" method="get" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-2">
+                <select name="avion" class="form-select">
+                    <option value="">-- Avion --</option>
+                    <option th:each="a : ${avions}" th:value="${a.id}" th:text="${a.libelle}"
+                            th:selected="${a.id == selectedAvion}"></option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="villeDepart" class="form-select">
+                    <option value="">-- Ville de départ --</option>
+                    <option th:each="v : ${villes}" th:value="${v.id}" th:text="${v.nom}"
+                            th:selected="${v.id == selectedVilleDepart}"></option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="villeArrivee" class="form-control" placeholder="ID Ville arrivée">
+            </div>
+            <div class="col-md-2">
+                <input type="datetime-local" name="dateDepart" class="form-control" placeholder="Date départ">
+            </div>
+            <div class="col-md-2">
+                <input type="datetime-local" name="dateArrivee" class="form-control" placeholder="Date arrivée">
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="prixBase" class="form-control" placeholder="Prix de base">
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+    </form>
+
+    <!-- Résultat -->
     <div th:if="${vols != null and !vols.isEmpty()}">
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
@@ -48,7 +83,6 @@
         </div>
     </div>
 
-    <!-- Affiche un message si aucun vol n'est disponible -->
     <div th:if="${vols == null or vols.isEmpty()}">
         <div class="alert alert-warning text-center" role="alert">
             Aucun vol disponible pour le moment.
@@ -56,7 +90,6 @@
     </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
